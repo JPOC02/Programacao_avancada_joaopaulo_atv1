@@ -1,0 +1,524 @@
+Nome: João Paulo de Oliveira Cabral
+Matricula: 20220050517
+
+Questao 1:
+
+° p == &i: (true)
+	Isso acontece, porque a variável "p" recebeu o ponteiro da variável "i", logo uma comparação entre eles vai comprovar que eles tem o mesmo valor.
+
+° *p - *q: -2
+	A saída é essa, pois o operador "*" retorna o valor guardado nos ponteiros "p" e "q" que são "3" e "5" respectivamente.
+
+° **&p: 3 (o valor da varíavel "i")
+	Essa é a saída, visto que a linguagem c executa essas operações da direita para esquerda, com isso o operador "&p" retorna o endereço de memória da variável p, já "&p" retorna o valor que está guardado no endereço de memória de "p" (o valor de p que é o endereço de memória de a), e por fim "*&p" retorna o valor do valor guardado no endereço de "p" que é o valor de "i".
+
+° 3 - *p/*q + 7: 10
+	Esse é o resultado, já que a divisão "*p/*q" ao subistituirmos os valores a fração fica "3/5" o que daria "0.6", contudo, como as variáveis são inteiras, o resultado dessa operação é "0", com isso agora só resolvemos as expressão "3 - 0 + 7" que resulta em 10.
+
+---------------------------
+
+Questao 2:
+
+° p = 4094
+
+° p+1 = 4096
+
+° *p + 2 = 7
+
+° **&p = 5
+
+° 3**p = 15
+
+° **&p + 4 = 9
+
+---------------------------
+
+Questao 3:
+
+	A atribuição "i = (*&)j;" é ilegal, pois o operador "&" não pode ser separado por vírgula da variável que este ira retornar o endereço.
+
+---------------------------
+
+Questao 4:
+
+	Na seção "a" será mostrado "20", visto que esse é o valor da variável inteira "valor" após seu endereço de memória ter sido guardado no ponteiro para int "p1" e o valor armazenado nesse endereço, que era "10", ser alterado para "20".
+
+	Na seção "b" será mostrado "29.0", visto que esse é o valor da variável decimal "temp" após seu endereço de memória ter sido guardado no ponteiro para float "p1" e o valor armazenado nesse endereço, que era "26.5", ser alterado para "29.0".
+
+	Na seção "c" será mostrado "P", visto que esse é o valor da variável de caratcteres "aux" após ela receber o valor guardado no ponteiro "p3" o qual aponta para o primeiro elemento da string "Ponteiro".
+
+	Na seção "d" será mostrado "e", visto que esse é o valor da variável de caratcteres "aux" após ela receber o valor guardado na quinta posição do ponteiro "p3" o qual apontada para o primeiro elemento da string "Ponteiro".
+
+	Na seção "e" será mostrado "P", visto que esse é o valor guardado no ponteiro "p3" que recebeu o valor da variável nome, o qual é o ponteiro para o primeiro caractere da string "Ponteiro".
+
+	Na seção "f" será mostrado "e", visto que esse é o valor do endereço "p3+4"  o qual aponta para o quinto elemento da string "Ponteiro".
+
+	Na seção "g" será mostrado "t", visto que esse é o valor guardado no endereço de memória "p3[3]", visto que anteriormente o ponteiro "p3" apontava para o endereço "p3[4]" da string "Ponteiro".
+
+	Na seção "h" será mostrado "31", visto que esse é o valor da variável "idade" após ela receber o valor guardado no ponteiro "p3", o qual aponta para o primeiro elemento do array "vetor".
+
+	Na seção "i" será mostrado "45", visto que esse é o valor da variável "idade" após ela receber o valor guardado no ponteiro "p5", o qual aponta para o segundo elemento do array "vetor".
+
+	Na seção "j" será mostrado "27", visto que esse é o valor da variável "idade" após ela receber o valor guardado no ponteiro "p4", o qual aponta para o terceiro elemento do array "vetor".
+
+	Na seção "l" será mostrado "31", visto que esse é o valor da variável "idade" após ela receber o valor guardado no ponteiro "p4" o qual após o resultado do operador "p4 = p4 - 2" fazer o ponteiro "p4" apontar para o primeiro elemento do array "vetor".
+
+	Na seção "m" será mostrado "45", visto que esse é o valor do endereço de memória apontado pelo ponteiro "p5", o qual, após o operador "p5 = &vetor[2] - 1", aponta para o segundo elemento do array "vetor".
+
+	Na seção "n" será mostrado "37", visto que esse é o valor do endereço de memória apontado pelo ponteiro "p5", o qual, após o operador "p5++", aponta para o terceiro elemento do array "vetor".
+
+---------------------------
+
+Questao 5:
+
+	No seguinte programa será mostrado uma comparação entre os ponteiros e os array, demonstrando que eles basicamente representão a mesma entidade e que podemos utilizar os ponteiros para retornar os mesmos valores que um array retornaria
+
+---------------------------
+
+Questao 6:
+
+	A expressão que referencia o valor do terceiro elemento do vetor "pulo[]" é a expressão *(pulo+2), a qual vai pegar o valor do ponteiro que está duas posições a frente o ponteiro inicial do vetor (como o vetor inicia na posição 0 a posição 2 é a posição do terceiro elemento de pulo)
+
+---------------------------
+
+Questao 7:
+
+	Todas as seguintes declarações são válidas, visto que o array "mat[]" também guarda um endedereço de memória, o qual pode ser guardado no ponteiro "p" e o valor guardado nesse ponteiro pode ser recebido pela variável "x".
+
+---------------------------
+
+Questao 8:
+
+	O primeiro programa mostra todos os elementos guardados no vetor "vet", enquanto o segundo programa mostra todos os endereços de memória associados a cada elemento do vetor.
+
+---------------------------
+
+Questao 9:
+
+	O seguinte programa não será executado por possuir dois erros, o primeiro é a atribuição de valores ao struct na definição e o segundo é chamar o atributo "name", enquanto que o correto seria "nome".
+
+---------------------------
+
+Questao 10:
+
+	A saída do seguinte programa retornará o erro increment of read-only location '*x', pois o valor dessa variável foi declarado como constante e por isso não pode ser incrementado.
+
+---------------------------
+
+Questao 11:
+
+° Se "x" for declarado como char, então os valores de "x+1", "x+2" e "x+3", nesse caso idealizado, são: "4093", "4094" e "4095", respectivamente.
+° Se "x" for declarado como int, então os valores de "x+1", "x+2" e "x+3", nesse caso idealizado, são: "4094", "4096" e "4098", respectivamente.
+° Se "x" for declarado como float, então os valores de "x+1", "x+2" e "x+3", nesse caso idealizado, são: "4096", "4100" e "4104", respectivamente.
+° Se "x" for declarado como double, então os valores de "x+1", "x+2" e "x+3", nesse caso idealizado, são: "4100", "4108" e "4116", respectivamente.
+
+    Se fizermos uma comparação da realidade com esses casos auxiliares as principais diferenças são: o fato de não conseguirmos alocar exatamente esse endereço e o valor ocupado na memória das variáveis do tipo inteiro ser de 4 bytes.
+
+---------------------------
+
+Questao 12:
+
+	As linhas 10, 13 e 14 são linhas inválidas, visto que na linha 10 o programa tenta salvar uma string no valor de "aloha" que é um ponteiro para float, na linha 13 o programa tenta subistituir a linha 5 da matriz "coisa" pelo array "aloha" e, por fim, na linha 14 o programa tenta salvar um float no pornteiro "pf".
+
+---------------------------
+
+Questão 13:
+
+	Memory Leak é um erro que ocorre quando um programa aloca uma memória, mas não a deleta. Podemos perceber esse erro nos códigos abaixo, em que não há a presença do comando "free" ou existe uma possibilidade desse comando não ser executado.
+
+Código 1:
+
+#include <stdlib.h>
+ 
+int main(void)
+{
+    int* ptr = (int*)malloc(sizeof(int));
+ 
+    return 0;
+}
+
+Código 2:
+
+int txData(char *data)
+{
+    unsigned char *ptr = NULL, *buf = NULL;
+    int size = strlen(data);
+
+    if ((ptr = buf = (unsigned char*)malloc(size + 3)) == NULL)
+        return(-1);
+ 
+    *ptr++ = STX;
+ 
+    strncpy(ptr, data, size);
+    ptr += size;
+ 
+    *ptr++ = ETX;
+ 
+    if (txSerial(buf, size + 3) == -1)
+        return(-2);
+ 
+    free(buf);
+ 
+    return 0;
+}
+
+Código 3:
+
+int main(void)
+{
+    int n, *ptr;
+    ptr = (int*)malloc(sizeof(int));
+
+    scanf("%i", &n);
+
+    if(n < 10){
+        free(ptr);
+    }
+ 
+    return 0;
+}
+
+---------------------------
+
+Questão 14:
+
+	Um ponteiro para uma função é um ponteiro que recebe o espaço de momória em que essa função foi definida, possibilitando fazer a chamada dessa função a partir do ponteiro como no código abaixo.
+
+#include <stdio.h>
+
+void print(int x){
+    printf("x = %d\n", x);
+}
+
+int main() {
+    void (*pPrint) (int); //Declaração do ponteiro para uma função que recebe um inteiro como parâmetro
+    pPrint = &print;
+
+    (*pPrint)(4);
+}
+
+
+
+---------------------------
+
+Questao 15:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+  float n, *p, temp=0;
+
+  scanf("%f", &n);
+
+  p = malloc(n*sizeof(int));
+
+  for(int i = 0; i < n; i++){
+    scanf("%f", p+i);
+  }
+
+  for(int i = 0; i < n; i++){
+    for(int j = i; j < n; j++){
+      if(*(p+j) < *(p+i)){
+        temp = *(p+j);
+        *(p+j) = *(p+i);
+        *(p+i) = temp;
+      }
+    }
+  }
+
+  for(int i = 0; i < n; i++){
+    printf("p[%i] = %f\n", i, *(p+i));
+  }
+
+  free(p);
+
+}
+
+
+---------------------------
+
+Questão 16:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(float *px, float *py){ //função que recebe dois ponteiros para float representando as posições dos números que seram comparados
+
+    return *px - *py; // Retorna as diferença entre os dois valores (se *px == *py retorna 0, se *px > *py retorna um valor positivo e se *px < *py, retorna um valor negativo)
+}
+
+int main(void){
+  float n, *p; // declaração do número de elementos e do ponteiro que marca o início do array desses elementos
+
+  scanf("%f", &n); // input do número de elementos
+
+  p = malloc(n*sizeof(int)); //alocação da memória necessária para guardar esses elementos
+
+  for(int i = 0; i < n; i++){
+    scanf("%f", p+i); //atribuição dos valores de cada posição do array
+  }
+
+  qsort(p, n, sizeof(float), compare); //Utilização da função qsort que com base no valor vai alterar a posição dos elementos do array
+  // Se retornar 0 ou um número positivo os elementos não trocam de posição, se o retorno for negativo os elementos trocam de posição
+
+  //for que exibe os valores do array
+  for(int i = 0; i < n; i++){
+    printf("p[%i] = %f\n", i, *(p+i));
+  }
+
+  free(p); //Liberando o espaço de memória reservado pelo programa
+
+}
+
+---------------------------
+
+Questão 17:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(int *px, int *py){ //função que recebe dois ponteiros para float representando as posições dos números que seram comparados
+    return *px - *py; // Retorna as diferença entre os dois valores (se *px == *py retorna 0, se *px > *py retorna um valor positivo e se *px < *py, retorna um valor negativo)
+}
+
+void ordenar(int *p, int n, int (*fun)(int *px, int *py)){ // Função que ordena os elementos do array
+    int posi_menor, i, j, temp;
+    for(i = 0; i < n; i++){
+        posi_menor = i;
+        for(j = i+1; j < n; j++){
+            if((*fun)(p+j, p+i) < 0){ // verifica se o valor na posição p+j é menor que o valor p+i
+                posi_menor = j; // salva  a posição do menor valor do array
+            }
+        }
+        //coloca o valor do menor elemento no inicio do array
+        temp = p[i];
+        p[i] = p[posi_menor];
+        p[posi_menor] = temp;
+    }
+}
+
+int main(void){
+    int n, *p; // declaração do número de elementos e do ponteiro que marca o início do array desses elementos
+    int (*pCom)(int*, int*); //declaração de um ponteiro para uma função que retorna um inteiro e recebe dois ponteiros como parâmetros
+
+    pCom = &compare; //atribuição do endereço de compare ao ponteiro
+
+    scanf("%d", &n); // input do número de elementos
+
+    p = malloc(n*sizeof(int)); //alocação da memória necessária para guardar esses elementos
+
+    for(int i = 0; i < n; i++){
+        scanf("%d", p+i); //atribuição dos valores de cada posição do array
+    }
+
+    ordenar(p, n, pCom); //chamada da função ordenar passando o ponteiro de compare
+
+    //for que exibe os valores do array
+    for(int i = 0; i < n; i++){
+        printf("p[%d] = %d\n", i, *(p+i));
+    }
+
+    free(p); //Liberando o espaço de memória reservado pelo programa
+
+}
+
+---------------------------
+
+Questão 18:
+
+---------------------------
+
+
+Questão 19:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void soma(int *px, int *py, int *pz, int n){
+    for(int i = 0; i < n; i++){
+        pz[i] = px[i] + py[i];
+    }
+}
+
+int main(void){
+    int n, *vet1, *vet2, *result, i;
+
+    scanf("%i", &n);
+
+    vet1 = malloc(n*sizeof(int));
+    vet2 = malloc(n*sizeof(int));
+    result = malloc(n*sizeof(int));
+
+    for(i = 0; i < n; i++){
+        scanf("%i", vet1 + i);
+    }
+
+    for(i = 0; i < n; i++){
+        scanf("%i", vet2+i);
+    }
+
+    soma(vet1, vet2, result, n);
+    for(i = 0; i < n; i++){
+        printf("result[%i] = %i\n", i, result[i]);
+    }
+}
+
+---------------------------
+
+Questão 20:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void produto(int **A, int **B, int **C, int lA, int cA, int cB){
+    int soma = 0;
+    for(int i = 0; i < lA; i++){
+        for(int j = 0; j < cB; j++){
+
+            for(int k = 0; k < cA; k++){
+                soma += A[i][k] * B[k][j];
+            }
+
+            C[i][j] = soma;
+            soma = 0;
+        }
+    }
+}
+
+int main(void){
+    int lA, cA, cB, i, j, **A, **B, **C;
+
+    scanf("%i", &lA);
+    scanf("%i", &cA);
+    scanf("%i", &cB);
+
+    A = malloc(lA * sizeof(int));
+    A[0] = malloc(lA * cA * sizeof(int));
+
+    for(i = 1; i < lA; i++){
+        A[i] = A[i - 1] + cA;
+    }
+
+    for(i = 0; i < lA; i++){
+        for(j = 0; j < cA; j++){
+            scanf("%i", &A[i][j]);
+        }
+    }
+
+    B = malloc(cA * sizeof(int));
+    B[0] = malloc(cA * cB * sizeof(int));
+
+    for(i = 1; i < cA; i++){
+        B[i] = B[i - 1] + cB;
+    }
+
+    for(i = 0; i < cA; i++){
+        for(j = 0; j < cB; j++){
+            scanf("%i", &B[i][j]);
+        }
+    }
+
+    C = malloc(lA * sizeof(int));
+    C[0] = malloc(lA * cB * sizeof(int));
+
+    for(i = 1; i < lA; i++){
+        C[i] = C[i - 1] + cB;
+    }
+
+    produto(A, B, C, lA, cA, cB);
+
+    printf("\n");
+    for(i = 0; i < lA; i++){
+        for(j = 0; j < cB; j++){
+            printf("%i ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    free(A[0]);
+    free(A);
+    free(B[0]);
+    free(B);
+    free(C[0]);
+    free(C);
+	
+}
+
+
+---------------------------
+
+Questão 21:
+
+	O trecho que apresenta um vazamento de memória é o trecho "c" no qual caso a função f receba o parâmetro data com um valor maior que 50 a função retornará -1 e não executará o "free()" na linha abaixo.
+
+---------------------------
+
+Questão 22:
+
+	Após a chamada desse programa com os valores 10 e 1 as saidas são 15(x), 13(y) e 0(z), isso ocorre, pois durante o loop x realiza o "or" lógico bit a bit, operação que faz o bit virar 1 em uma determinada posição se ao menos um dos bits forem iguais a 1 e, como o "b" tem seu bit deslocado quatro vezes, ele torna os 4 primeiros bits de "x" iguais a 1, formando o número binário 1111 que é 15 em decimal.
+	Já o "y" faz um "xor" bit a bit com o "a" operação que faz o bit em uma determinada posição ser 1 se os dois bits forem diferentes e como durante a última repetição do loop o segundo bit de "y" e "a" coincidiram o valor gerado foi 1101 em binário que é o número 13 em decimal.
+	Por fim, o z faz um "and" bit a bit com a soma de a e b, operação que só retorna 1 se ambos os bits forem iguais a 1 e como no último loop esse caso não ocorreu em nenhum dos pares de bits presentes nesses dois valores o resultado foi 0000 em binário que é igual a 0 em decimal. 
+
+---------------------------
+
+Questão 23:
+
+	A alternativa correta é a alternativa VIII, visto que o resultado da impressão é a posição do valor 15 no array vetor (7) a qual é a mesma independente da função utilizada, além disso a "funcao2" implementa uma estratégia interativa, pois durante a execução do código ela pode se chamar multiplas vezes até que atinja uma consição de parada e, por fim, no pior dos casos a "funcao1" é mais rápida que a "funcao2", pois quando uma função iterativa chama a si mesma várias vezes ele consome muita memória, visto que as instâncias iniciais só são finalizadas quando a função chega na condição de parada, podendo gerar inúmeras funções "abertas" ao mesmo tempo.
+
+---------------------------
+
+Questão 24:
+
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+  //Matriz de exemplo
+  unsigned char m[8][8] = {
+  {1, 0, 0, 0, 0, 0, 0, 0},
+  {0, 1, 0, 0, 0, 0, 0, 0},
+  {0, 0, 1, 0, 0, 0, 0, 0},
+  {0, 0, 0, 1, 0, 0, 0, 0},
+  {0, 0, 0, 0, 1, 0, 0, 0},
+  {0, 0, 0, 0, 0, 1, 0, 0},
+  {0, 0, 0, 0, 0, 0, 1, 0},
+  {0, 0, 0, 0, 0, 0, 0, 1}
+  };
+  
+  unsigned __int64 n = 15; //Criação de um Int de 64bits 
+  unsigned char bit, *pn; //Ponteiro inteiro para char(1byte) e variável para char para imprimir o número em binário
+  int i, j, soma=0; //indices e váriavel de soma usados no tratamento da matriz
+
+  pn = (char *)&n; //Fazendo pn aportar para o endereço de n
+
+  //convertendo os "0"s e "1"s da matriz para números inteiros e salvando eles em cada byte da memória de n
+  for(i = 0; i < 8; i++){
+    for(j = 0; j < 8; j++){
+      if(m[i][j] == 1){
+        soma += pow(2, 7-j);
+      }
+    }
+    pn[7-i] = soma; //mudando a ordem dos valores para a informação das últimas linha ficarem nos bits mais significativos
+    soma = 0;
+  }
+
+  //impressão da variável em binário para verificar se funcionou
+  for(i = 0; i < 8; i++){
+    for(bit = 128; bit; bit = bit >> 1){
+      if(pn[i] & bit){
+        printf("1");
+      } else {
+        printf("0");
+      }
+    }
+    printf("|");
+  }
+}
+
+---------------------------
+
+Questão 25:
+
+
+---------------------------
