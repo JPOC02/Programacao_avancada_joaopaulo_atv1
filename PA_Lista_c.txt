@@ -245,7 +245,11 @@ Questão 16:
 
 int compare(float *px, float *py){ //função que recebe dois ponteiros para float representando as posições dos números que seram comparados
 
-    return *px - *py; // Retorna as diferença entre os dois valores (se *px == *py retorna 0, se *px > *py retorna um valor positivo e se *px < *py, retorna um valor negativo)
+    if(*px - *py > 0) return 1;
+    if(*px - *py == 0) return 0;
+    if(*px - *py < 0) return -1; 
+
+// Retorna as diferença entre os dois valores (se *px == *py retorna 0, se *px > *py retorna um valor positivo e se *px < *py, retorna um valor negativo)
 }
 
 int main(void){
@@ -260,7 +264,7 @@ int main(void){
   }
 
   qsort(p, n, sizeof(float), compare); //Utilização da função qsort que com base no valor vai alterar a posição dos elementos do array
-  // Se retornar 0 ou um número positivo os elementos não trocam de posição, se o retorno for negativo os elementos trocam de posição
+  // Se retornar 0 ou um número negativo os elementos não trocam de posição, se o retorno for positivo os elementos trocam de posição
 
   //for que exibe os valores do array
   for(int i = 0; i < n; i++){
@@ -287,7 +291,7 @@ void ordenar(int *p, int n, int (*fun)(int *px, int *py)){ // Função que orden
     for(i = 0; i < n; i++){
         posi_menor = i;
         for(j = i+1; j < n; j++){
-            if((*fun)(p+j, p+i) < 0){ // verifica se o valor na posição p+j é menor que o valor p+i
+            if((*fun)(p+i, p+j) > 0){ // verifica se o valor na posição p+j é menor que o valor p+i
                 posi_menor = j; // salva  a posição do menor valor do array
             }
         }
@@ -326,6 +330,83 @@ int main(void){
 ---------------------------
 
 Questão 18:
+
+	Comparando o tempo das duas execuções anteriores, podemos perceber que a função qsort é a mais rápida, levando aproximadamente metade do tempo de execução da função comparar para ordenar o mesmo vetor.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int compare(int *px, int *py){
+    return *px - *py;
+}
+
+void ordenar(int *p, int n, int (*fun)(int *px, int *py)){
+    int posi_menor, i, j, temp;
+    for(i = 0; i < n; i++){
+        posi_menor = i;
+        for(j = i+1; j < n; j++){
+            if((*fun)(p+i, p+j) > 0){
+                posi_menor = j;
+            }
+        }
+
+        temp = p[i];
+        p[i] = p[posi_menor];
+        p[posi_menor] = temp;
+    }
+}
+
+int main(void){
+    int n, *p, *h, temp=0;
+    int (*pCom)(int*, int*);
+    clock_t t;
+
+    pCom = &compare;
+
+    scanf("%d", &n);
+
+    p = malloc(n*sizeof(int));
+    h = malloc(n*sizeof(int));
+
+    for(int i = 0; i < n; i++){
+        scanf("%d", &temp);
+        p[i] = temp;
+        h[i] = temp;
+    }
+
+    t = clock();
+    for(int i = 0; i < 100000; i++){
+        ordenar(p, n, pCom);
+    }
+
+    t = clock() - t;
+    printf("Tempo da funcao ordenar: %fs\n", ((float)t)/CLOCKS_PER_SEC);
+
+
+    t = clock();
+    for(int i = 0; i < 100000; i++){
+        qsort(h, n, sizeof(int), pCom);
+    }
+
+    t = clock() - t;
+    printf("Tempo da funcao qsort: %fs\n", ((float)t)/CLOCKS_PER_SEC);
+
+
+    for(int i = 0; i < n; i++){
+        printf("p[%d] = %d\n", i, *(p+i));
+    }
+
+    printf("\n");
+    for(int i = 0; i < n; i++){
+        printf("h[%d] = %d\n", i, *(h+i));
+    }
+
+    free(p);
+    free(h);
+    
+}
+
 
 ---------------------------
 
@@ -464,7 +545,7 @@ Questão 22:
 
 Questão 23:
 
-	A alternativa correta é a alternativa VIII, visto que o resultado da impressão é a posição do valor 15 no array vetor (7) a qual é a mesma independente da função utilizada, além disso a "funcao2" implementa uma estratégia interativa, pois durante a execução do código ela pode se chamar multiplas vezes até que atinja uma consição de parada e, por fim, no pior dos casos a "funcao1" é mais rápida que a "funcao2", pois quando uma função iterativa chama a si mesma várias vezes ele consome muita memória, visto que as instâncias iniciais só são finalizadas quando a função chega na condição de parada, podendo gerar inúmeras funções "abertas" ao mesmo tempo.
+	A alternativa correta é a alternativa IV, visto que o resultado da impressão é a posição do valor 15 no array vetor (7) a qual é a mesma independente da função utilizada, além disso a "funcao2" implementa uma estratégia recursiva, pois durante a execução do código ela pode se chamar multiplas vezes até que atinja uma condição de parada e, por fim, no pior dos casos a "funcao1" é mais lenta que a "funcao2", pois, mesmo que, quando uma função iterativa chama a si mesma várias vezes ele consome muita memória, o processo de identificação de posição na "funcao2" possui uma quantidade menor de passos.
 
 ---------------------------
 
@@ -519,6 +600,84 @@ int main(){
 ---------------------------
 
 Questão 25:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int h, l, p, ***m, i, j, k, cmd, value, loop = 1;
+
+
+    scanf("%d", &h);
+    scanf("%d", &l);
+    scanf("%d", &p);
+    printf("\n");
+
+    m = malloc(h*sizeof(int**));
+    m[0] = malloc(h*l*sizeof(int*));
+    for(i = 1; i < l; i++){
+        m[i] = m[i-1] + l;
+    }
+
+    m[0][0] = malloc(h*l*p*sizeof(int));
+    for(i = 1; i < h*l; i++){
+        m[0][i] = m[0][i-1] + p;
+    }
+
+    for(i = 0; i < h; i++){
+        for(j = 0; j < l; j++){
+            for(k = 0; k < p; k++){
+                scanf("%d", &m[i][j][k]);
+            }
+        }
+        printf("\n");
+    }
+
+    for(i = 0; i < h; i++){
+        for(j = 0; j < l; j++){
+            for(k = 0; k < p; k++){
+                printf("%d ", m[i][j][k]);
+            }
+            printf("\n");
+        }
+        printf("\n");
+    }
+
+    while(loop){
+        scanf("%d", &cmd);
+        switch(cmd){
+            case 1: //alterar valor
+                //inseri o valor que quer colocar na matriz, e a posição (i,j,k) do elemento
+                scanf("%d", &value);
+                scanf("%d", &i);
+                scanf("%d", &j);
+                scanf("%d", &k);
+
+                m[i][j][k] = value;
+                break;
+
+            case 2: //Imprimir um plano i específico
+                scanf("%d", &i);
+                for(int j = 0; j < l; j++){
+                    for(int k = 0; k < p; k++){
+                        printf("%d ", m[i][j][k]);
+                    }
+                    printf("\n");
+                }
+                break;
+
+            default:
+                loop = 0;
+                break;
+        }
+    }
+
+    free(m[0][0]);
+    free(m[0]);
+    free(m);
+    return 0;
+}
 
 
 ---------------------------
