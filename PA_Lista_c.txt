@@ -595,6 +595,7 @@ int main(){
     }
     printf("|");
   }
+  free(pn);
 }
 
 ---------------------------
@@ -616,7 +617,7 @@ int main()
 
     m = malloc(h*sizeof(int**));
     m[0] = malloc(h*l*sizeof(int*));
-    for(i = 1; i < l; i++){
+    for(i = 1; i < h; i++){
         m[i] = m[i-1] + l;
     }
 
@@ -676,8 +677,8 @@ int main()
     free(m[0][0]);
     free(m[0]);
     free(m);
+
     return 0;
 }
-
 
 ---------------------------
