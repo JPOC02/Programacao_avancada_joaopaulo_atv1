@@ -554,21 +554,40 @@ Questão 24:
 #include <stdio.h>
 #include <math.h>
 
+void send(unsigned long long x){
+
+  unsigned char bit, *px;
+  px = (char *)&x;
+
+
+  //impressão da variável em binário para verificar se funcionou
+  for(int i = 0; i < 8; i++){
+    for(bit = 128; bit; bit = bit >> 1){
+      if(px[i] & bit){
+        printf("1");
+      } else {
+        printf("0");
+      }
+    }
+    printf("|");
+  }
+}
+
 int main(){
   //Matriz de exemplo
   unsigned char m[8][8] = {
-  {1, 0, 0, 0, 0, 0, 0, 0},
+  {1, 0, 0, 0, 1, 0, 0, 0},
   {0, 1, 0, 0, 0, 0, 0, 0},
   {0, 0, 1, 0, 0, 0, 0, 0},
   {0, 0, 0, 1, 0, 0, 0, 0},
   {0, 0, 0, 0, 1, 0, 0, 0},
-  {0, 0, 0, 0, 0, 1, 0, 0},
-  {0, 0, 0, 0, 0, 0, 1, 0},
-  {0, 0, 0, 0, 0, 0, 0, 1}
+  {0, 1, 0, 0, 0, 1, 0, 0},
+  {0, 0, 0, 1, 0, 0, 1, 0},
+  {0, 0, 0, 0, 1, 0, 0, 1}
   };
-  
-  unsigned __int64 n = 15; //Criação de um Int de 64bits 
-  unsigned char bit, *pn; //Ponteiro inteiro para char(1byte) e variável para char para imprimir o número em binário
+
+  unsigned long long n; //Criação de um Int de 64bits
+  unsigned char *pn; //Ponteiro inteiro para char(1byte) e variável para char para imprimir o número em binário
   int i, j, soma=0; //indices e váriavel de soma usados no tratamento da matriz
 
   pn = (char *)&n; //Fazendo pn aportar para o endereço de n
@@ -580,22 +599,19 @@ int main(){
         soma += pow(2, 7-j);
       }
     }
-    pn[7-i] = soma; //mudando a ordem dos valores para a informação das últimas linha ficarem nos bits mais significativos
+    pn[i] = soma; //mudando a ordem dos valores para a informação das últimas linha ficarem nos bits mais significativos
     soma = 0;
   }
 
-  //impressão da variável em binário para verificar se funcionou
   for(i = 0; i < 8; i++){
-    for(bit = 128; bit; bit = bit >> 1){
-      if(pn[i] & bit){
-        printf("1");
-      } else {
-        printf("0");
-      }
-    }
-    printf("|");
+    printf("%d|", pn[i]);
   }
-  free(pn);
+
+  printf("\n");
+
+  send(n);
+
+  return 0;
 }
 
 ---------------------------
